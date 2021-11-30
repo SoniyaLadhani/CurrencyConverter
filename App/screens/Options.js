@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View, Linking, Alert } from 'react-native';
+import { SafeAreaView, StatusBar, ScrollView, StyleSheet, View, Linking, Alert } from 'react-native';
 import Icon from 'react-native-remix-icon';
 
 import colors from '../constants/colors';
@@ -14,6 +14,7 @@ const openLink = (url) => {
 const Options = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
             <ScrollView>
                 <RowItem
                     title="Themes"

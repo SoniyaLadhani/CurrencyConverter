@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, StatusBar, StyleSheet, Image, Dimensions, Text, ScrollView } from 'react-native';
+import { View, StatusBar, StyleSheet, Image, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-remix-icon';
 import dayjs from 'dayjs';
 
 import Button from '../components/Button';
@@ -9,7 +11,7 @@ import colors from '../constants/colors';
 
 const screen = Dimensions.get('window');
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const baseCurrency = "USD";
     const quoteCurrency = "GBP";
     const conversionRatio = "0.8345";
@@ -19,7 +21,11 @@ const Home = () => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content"></StatusBar>
-
+            <SafeAreaView style={styles.header}>
+                <TouchableOpacity onPress={() => navigation.push('Options')}>
+                    <Icon name="settings-5-line" size="24" color={colors.white}></Icon>
+                </TouchableOpacity>
+            </SafeAreaView>
             <ScrollView scrollEnabled={scrollEnabled}>
                 <View style={styles.content}>
                     <View style={styles.logoContainer}>
@@ -98,8 +104,12 @@ const styles = StyleSheet.create({
         color: colors.white,
     },
     content: {
-        paddingTop: screen.height * 0.2,
+        paddingTop: screen.height * 0.1,
     },
+    header: {
+        alignItems: "flex-end",
+        marginHorizontal: 20
+    }
 });
 
 export default Home;
