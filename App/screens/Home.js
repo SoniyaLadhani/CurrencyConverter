@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import ConversionInput from '../components/ConversionInput';
 import KeyboardSpacer from '../components/KeyboardSpacer';
 import colors from '../constants/colors';
+import { NavigationHelpersContext } from '@react-navigation/native';
 
 const screen = Dimensions.get('window');
 
@@ -44,7 +45,7 @@ const Home = ({ navigation }) => {
                     <ConversionInput
                         text={baseCurrency}
                         value="123"
-                        onButtonPress={() => alert('todo!')}
+                        onButtonPress={() => navigation.push('CurrencyList', { title: 'Base Currency', activeCurrency: baseCurrency })}
                         keyboardType="numeric"
                         onChangeText={(text) => console.log('text', text)}
                     />
@@ -52,7 +53,7 @@ const Home = ({ navigation }) => {
                     <ConversionInput
                         text={quoteCurrency}
                         value="123"
-                        onButtonPress={() => alert('todo!')}
+                        onButtonPress={() => navigation.push('CurrencyList', { title: 'Quote Currency', activeCurrency: quoteCurrency })}
                         keyboardType="numeric"
                         onChangeText={(text) => console.log('text', text)}
                         editable={false}
