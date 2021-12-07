@@ -52,7 +52,10 @@ const Home = ({ navigation }) => {
                         text={baseCurrency}
                         value={value}
                         onButtonPress={() => navigation.push('CurrencyList',
-                            { title: 'Base Currency', activeCurrency: baseCurrency, onChange: (currency) => setBaseCurrency(currency) })}
+                            {
+                                title: 'Base Currency', activeCurrency: baseCurrency,
+                                isBaseCurrency: true
+                            })}
                         keyboardType="numeric"
                         onChangeText={(text) => setValue(text)}
                     />
@@ -61,7 +64,10 @@ const Home = ({ navigation }) => {
                         text={quoteCurrency}
                         value={value && `${parseFloat(value * conversionRatio).toFixed(2)}`}
                         onButtonPress={() => navigation.push('CurrencyList',
-                            { title: 'Quote Currency', activeCurrency: quoteCurrency, onChange: (currency) => setQuoteCurrency(currency) })}
+                            {
+                                title: 'Quote Currency', activeCurrency: quoteCurrency,
+                                isBaseCurrency: false
+                            })}
                         keyboardType="numeric"
                         onChangeText={(text) => console.log('text', text)}
                         editable={false}
@@ -72,7 +78,6 @@ const Home = ({ navigation }) => {
                     <KeyboardSpacer onToggle={(visible) => setScrollEnabled(visible)} />
                 </View>
             </ScrollView>
-
         </View >
     )
 
