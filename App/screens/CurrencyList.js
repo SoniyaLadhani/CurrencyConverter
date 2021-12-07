@@ -21,7 +21,12 @@ const CurrencyList = ({ navigation, route = {} }) => {
                 renderItem={({ item }) => {
                     const selected = params.activeCurrency === item;
                     return (
-                        <RowItem title={item} onPress={() => navigation.pop()} rightIcon={
+                        <RowItem title={item} onPress={() => {
+                            if (params.onChange) {
+                                params.onChange(item);
+                            }
+                            navigation.pop()
+                        }} rightIcon={
                             selected && (<View style={styles.icon}>
                                 <Icon name="check-line" size="24" color={colors.white}></Icon>
                             </View>)

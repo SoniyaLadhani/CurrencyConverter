@@ -1,9 +1,12 @@
 import React from 'react';
 import Navigation from './config/Navigation';
+import { ConversionContextProvider } from './util/conversionContext';
 
 const App = () => {
   return (
-    <Navigation />
+    <ConversionContextProvider>
+      <Navigation />
+    </ConversionContextProvider>
   );
 }
 
