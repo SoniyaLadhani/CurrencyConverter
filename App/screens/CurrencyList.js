@@ -30,7 +30,6 @@ const CurrencyList = ({ navigation, route = {} }) => {
                     return (
                         <RowItem title={item} onPress={() => {
                             params.isBaseCurrency ? setBaseCurrency(item) : setQuoteCurrency(item);
-
                             navigation.pop()
                         }} rightIcon={
                             selected && (<View style={styles.icon}>
